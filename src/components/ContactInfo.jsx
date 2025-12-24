@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub, FiInstagram, FiArrowRight } from 'react-icons/fi';
 
 export default function ContactInfo() {
@@ -13,7 +13,7 @@ export default function ContactInfo() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       {contacts.map((c, i) => (
-        <motion.a
+        <Motion.a
           key={i}
           href={c.link}
           target="_blank"
@@ -31,7 +31,7 @@ export default function ContactInfo() {
             <div className="text-white font-medium truncate text-sm">{c.display}</div>
           </div>
           <FiArrowRight className="text-slate-500 group-hover:text-pink-500 transition-colors" />
-        </motion.a>
+        </Motion.a>
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { FiBookOpen, FiArrowUpRight, FiCode, FiCpu } from "react-icons/fi";
 
 const writeups = [
@@ -36,7 +36,7 @@ const itemVariants = {
 export default function WriteUps() {
   return (
     <section className="py-20 px-6 max-w-5xl mx-auto">
-      <motion.div 
+      <Motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -46,9 +46,9 @@ export default function WriteUps() {
           Write-Ups & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Notes</span>
         </h2>
         <div className="w-24 h-1 bg-slate-800 mx-auto mt-4 rounded-full"></div>
-      </motion.div>
+      </Motion.div>
 
-      <motion.div 
+      <Motion.div 
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -56,7 +56,7 @@ export default function WriteUps() {
         className="grid grid-cols-1 gap-6"
       >
         {writeups.map((item, index) => (
-          <motion.a
+          <Motion.a
             key={index}
             variants={itemVariants}
             href={item.link}
@@ -95,9 +95,9 @@ export default function WriteUps() {
                 <FiArrowUpRight />
               </div>
             </div>
-          </motion.a>
+          </Motion.a>
         ))}
-      </motion.div>
+      </Motion.div>
     </section>
   );
 }

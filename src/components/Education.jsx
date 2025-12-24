@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 // Pastikan path assets sesuai
 import SmpImage from '../assets/smp.svg';
 import SmaImage from '../assets/sma.svg';
@@ -29,7 +29,7 @@ export default function Education() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {educationData.map((item, index) => (
-        <motion.div
+        <Motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function Education() {
               </span>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
       ))}
     </div>
   );

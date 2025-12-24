@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 // IMPORT ASSETS
 import HmiLogo from '../assets/hmi.svg';
@@ -82,7 +82,7 @@ export default function Experience() {
 
       <div className="space-y-10">
         {experienceData.map((item, index) => (
-          <motion.div
+            <Motion.div
             key={index}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -130,7 +130,7 @@ export default function Experience() {
                 </div>
               )}
             </div>
-          </motion.div>
+          </Motion.div>
         ))}
       </div>
     </div>

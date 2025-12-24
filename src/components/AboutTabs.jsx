@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import Education from './Education';
 import Experience from './Experience';
 import Certificates from './Certificates';
@@ -39,7 +39,7 @@ export default function AboutTabs() {
                 }`}
               >
                 {activeTab === tab.id && (
-                  <motion.div
+                  <Motion.div
                     layoutId="activeTab"
                     className="absolute inset-0 bg-blue-600 rounded-full shadow-lg shadow-blue-900/50"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
@@ -54,7 +54,7 @@ export default function AboutTabs() {
         {/* Content Area */}
         <div className="min-h-[500px]">
           <AnimatePresence mode="wait">
-            <motion.div
+            <Motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export default function AboutTabs() {
               {activeTab === 'experience' && <Experience />}
               {activeTab === 'education' && <Education />}
               {activeTab === 'certificates' && <Certificates />}
-            </motion.div>
+            </Motion.div>
           </AnimatePresence>
         </div>
       </div>

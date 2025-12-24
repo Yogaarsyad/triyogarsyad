@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { FiDownload, FiGithub, FiLinkedin, FiInstagram, FiMail, FiArrowRight, FiCode, FiCpu, FiMonitor, FiTerminal } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 
@@ -47,8 +47,12 @@ export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-slate-950 pt-20">
       
-      {/* --- ANIMATED BACKGROUND --- */}
+      {/* --- BACKGROUND IMAGE (Universitas Indonesia) + ANIMATED LAYERS --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Add a background image named `ui-bg.jpg` to the `public/` folder. */}
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/ui-bg.jpg')" }} aria-hidden="true"></div>
+        {/* dark overlay for contrast */}
+        <div className="absolute inset-0 bg-black/60 mix-blend-multiply" aria-hidden="true"></div>
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
         
@@ -59,7 +63,7 @@ export default function Hero() {
         
         {/* Floating Particles */}
         {[...Array(20)].map((_, i) => (
-          <motion.div
+          <Motion.div 
             key={i}
             className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
             initial={{ y: Math.random() * 100, x: Math.random() * 100 }}
@@ -84,14 +88,14 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
           
           {/* --- LEFT CONTENT (TEXT) --- */}
-          <motion.div 
+          <Motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex-1 text-center lg:text-left order-2 lg:order-1"
           >
             {/* Welcome Tag */}
-            <motion.div 
+            <Motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -99,25 +103,25 @@ export default function Hero() {
             >
               <span className="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
               <span>AVAILABLE FOR HIRE</span>
-            </motion.div>
+            </Motion.div>
 
             {/* Main Title */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
               <span className="block text-slate-300 text-4xl lg:text-5xl mb-2">Hello, I'm</span>
-              <motion.span 
+              <Motion.span 
                 initial={{ backgroundPosition: "0% 50%" }}
                 animate={{ backgroundPosition: "100% 50%" }}
                 transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
                 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-[length:200%_auto] font-extrabold"
               >
                 Tri Yoga Arsyad
-              </motion.span>
+              </Motion.span>
             </h1>
 
             {/* Animated Role */}
             <div className="h-16 mb-6 overflow-hidden flex justify-center lg:justify-start items-center">
               <AnimatePresence mode="wait">
-                <motion.div
+                <Motion.div
                   key={currentRoleIndex}
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -126,7 +130,7 @@ export default function Hero() {
                   className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-400"
                 >
                   {roles[currentRoleIndex]}
-                </motion.div>
+                </Motion.div>
               </AnimatePresence>
             </div>
 
@@ -138,7 +142,7 @@ export default function Hero() {
             {/* Keywords / Skill Tags */}
             <div className="flex flex-wrap gap-3 mb-12 justify-center lg:justify-start">
               {keywords.map((keyword, index) => (
-                <motion.span
+                <Motion.span
                   key={keyword}
                   custom={index}
                   variants={keywordVariants}
@@ -148,36 +152,36 @@ export default function Hero() {
                   className="px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-lg text-slate-300 text-sm font-medium backdrop-blur-sm cursor-default transition-colors"
                 >
                   {keyword}
-                </motion.span>
+                </Motion.span>
               ))}
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-5 justify-center lg:justify-start items-center">
-              <motion.a 
+              <Motion.a 
                 href="https://drive.google.com/file/d/14H8xeSB2ZdX15RoDNLhO_QFk1br1m-eh/view?usp=drive_link" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-xl font-bold overflow-hidden shadow-lg shadow-blue-600/30"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold overflow-hidden btn-cta focus-ring"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <FiDownload className="group-hover:animate-bounce" />
                   Download CV
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </motion.a>
-              
-              <motion.a 
+              </Motion.a>
+
+              <Motion.a 
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group inline-flex items-center gap-2 px-6 py-4 bg-slate-800/50 border border-slate-700 text-slate-300 rounded-xl font-semibold hover:bg-slate-700 hover:text-white transition-all backdrop-blur-sm"
               >
                 <FiMail />
-                Contact Me
-              </motion.a>
+                <span>Contact Me</span>
+              </Motion.a>
             </div>
 
             {/* Social Links */}
@@ -186,10 +190,10 @@ export default function Hero() {
               <SocialBtn icon={<FiLinkedin />} href="https://linkedin.com" />
               <SocialBtn icon={<FiInstagram />} href="https://instagram.com" />
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* --- RIGHT CONTENT (PHOTO) --- */}
-          <motion.div 
+          <Motion.div 
             initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8, rotateY: isVisible ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -218,7 +222,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-transparent rounded-full -z-10 opacity-50 border border-slate-700"></div>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </div>
     </div>
@@ -227,20 +231,20 @@ export default function Hero() {
 
 // Komponen Tombol Sosial Media
 const SocialBtn = ({ icon, href }) => (
-  <motion.a 
-    href={href} 
-    target="_blank" 
-    rel="noreferrer"
+  <Motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     whileHover={{ y: -5 }}
-    className="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-xl hover:text-white hover:border-blue-500 hover:bg-blue-600/20 transition-all shadow-lg"
+    className="w-12 h-12 inline-flex items-center justify-center rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-xl hover:text-white hover:border-blue-500 hover:bg-blue-600/20 transition-all shadow-lg"
   >
     {icon}
-  </motion.a>
+  </Motion.a>
 );
 
 // Komponen Floating Icon
 const FloatingIcon = ({ top, left, right, bottom, delay, icon }) => (
-  <motion.div
+  <Motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay, duration: 2, repeat: Infinity, repeatType: "reverse" }}
@@ -248,5 +252,5 @@ const FloatingIcon = ({ top, left, right, bottom, delay, icon }) => (
     style={{ top, left, right, bottom }}
   >
     {icon}
-  </motion.div>
+  </Motion.div>
 );

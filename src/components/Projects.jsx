@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiMaximize2, FiX, FiExternalLink } from "react-icons/fi";
 
 // Import gambar dari assets (Pastikan file lifemon.png ada di folder src/assets/)
@@ -48,7 +48,7 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <motion.div
+          <Motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -85,34 +85,34 @@ export default function Projects() {
               <div className="pt-4 border-t border-slate-800 flex gap-3 mt-auto">
                 {/* Tombol Code */}
                 {project.github && (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="flex-1 py-2 flex items-center justify-center gap-2 text-xs font-bold text-white bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700 transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 flex items-center justify-center gap-2 text-xs font-bold text-white bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700 transition-colors">
                     <FiGithub /> CODE
                   </a>
                 )}
                 
                 {/* Tombol Demo (Hanya muncul jika ada link demo) */}
                 {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noreferrer" className="flex-1 py-2 flex items-center justify-center gap-2 text-xs font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/20">
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 flex items-center justify-center gap-2 text-xs font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/20">
                     <FiExternalLink /> DEMO
                   </a>
                 )}
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         ))}
       </div>
 
       {/* Modal Detail Project */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
+          <Motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
             onClick={() => setSelectedProject(null)}
           >
-            <motion.div 
+            <Motion.div 
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
@@ -140,19 +140,19 @@ export default function Projects() {
                 
                 <div className="flex gap-4">
                   {selectedProject.github && (
-                    <a href={selectedProject.github} target="_blank" className="flex-1 inline-flex justify-center items-center gap-2 px-6 py-3 bg-slate-800 border border-slate-700 text-white font-bold rounded-xl hover:bg-slate-700 transition-colors">
+                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex justify-center items-center gap-2 px-6 py-3 bg-slate-800 border border-slate-700 text-white font-bold rounded-xl hover:bg-slate-700 transition-colors">
                       <FiGithub size={18} /> Repository
                     </a>
                   )}
                   {selectedProject.demo && (
-                    <a href={selectedProject.demo} target="_blank" className="flex-1 inline-flex justify-center items-center gap-2 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/20">
+                    <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex justify-center items-center gap-2 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors shadow-lg shadow-blue-900/20">
                       <FiExternalLink size={18} /> Live Demo
                     </a>
                   )}
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </Motion.div>
+          </Motion.div>
         )}
       </AnimatePresence>
     </div>

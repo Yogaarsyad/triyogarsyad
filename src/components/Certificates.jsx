@@ -74,7 +74,7 @@ export default function Certificates() {
                 <a 
                   href={item.url} 
                   target="_blank" 
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-bold text-white hover:text-blue-400 transition-colors group/link"
                 >
                   Show Credential 

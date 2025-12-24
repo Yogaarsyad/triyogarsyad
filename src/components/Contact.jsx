@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub, FiInstagram, FiArrowRight } from 'react-icons/fi';
 
 export default function Contact() {
@@ -22,6 +21,7 @@ export default function Contact() {
               key={i}
               href={c.link}
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 p-4 rounded-xl border border-slate-800 bg-slate-950/50 hover:bg-slate-800 hover:border-blue-500/50 transition-all group"
             >
               <div className="text-xl text-blue-500 bg-blue-900/20 p-3 rounded-lg group-hover:scale-110 transition-transform">

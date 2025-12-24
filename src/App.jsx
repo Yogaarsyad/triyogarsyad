@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 
 // --- IMPORT KOMPONEN ---
 import Hero from './components/Hero';
@@ -65,7 +65,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           
           {/* Logo / Brand Text */}
-          <motion.div 
+          <Motion.div 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="text-2xl font-bold tracking-tighter cursor-pointer flex items-center gap-2 group"
@@ -75,12 +75,12 @@ export default function App() {
             <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
               Web Portfolio
             </span>
-          </motion.div>
+          </Motion.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <motion.button
+              {navLinks.map((link) => (
+              <Motion.button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 whileHover={{ scale: 1.1 }}
@@ -92,42 +92,42 @@ export default function App() {
                 {link.label.toUpperCase()}
                 
                 {/* Garis Bawah Bergerak (Active Indicator) */}
-                {activeSection === link.id && (
-                  <motion.div
+                  {activeSection === link.id && (
+                  <Motion.div
                     layoutId="activeNav"
                     className="absolute -bottom-2 left-0 right-0 h-0.5 bg-blue-500 rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-              </motion.button>
+              </Motion.button>
             ))}
             
             {/* Tombol HIRE ME (Scroll ke Contact) */}
-            <motion.button 
+            <Motion.button 
               onClick={() => scrollToSection('contact')}
               whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgb(37, 99, 235)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-full transition-all shadow-lg shadow-blue-500/20 cursor-pointer"
+              className="px-6 py-2.5 text-sm font-bold rounded-full transition-all shadow-lg cursor-pointer btn-cta focus-ring"
             >
               HIRE ME
-            </motion.button>
+            </Motion.button>
           </div>
 
           {/* Mobile Toggle */}
-          <motion.button 
+            <Motion.button 
             whileTap={{ scale: 0.8 }}
             className="md:hidden text-2xl text-slate-200 p-2 hover:bg-slate-800 rounded-lg transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <FiX /> : <FiMenu />}
-          </motion.button>
+            </Motion.button>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -136,7 +136,7 @@ export default function App() {
           >
             <div className="flex flex-col gap-8 text-center">
               {navLinks.map((link) => (
-                <motion.button
+                <Motion.button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   whileTap={{ scale: 0.9 }}
@@ -145,25 +145,25 @@ export default function App() {
                   }`}
                 >
                   {link.label}
-                </motion.button>
+                </Motion.button>
               ))}
               
               {/* Mobile Hire Me Button */}
-              <motion.button
+              <Motion.button
                 onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }}
                 whileTap={{ scale: 0.9 }}
-                className="text-xl font-bold text-white bg-blue-600 px-8 py-3 rounded-full mx-auto shadow-lg shadow-blue-500/30"
+                className="text-xl font-bold px-8 py-3 rounded-full mx-auto btn-cta focus-ring"
               >
                 HIRE ME
-              </motion.button>
+              </Motion.button>
 
               <div className="flex justify-center gap-6 mt-4">
-                <motion.a whileHover={{ y: -5 }} href="https://github.com/Yogaarsyad" target="_blank" className="text-2xl text-slate-400 hover:text-white"><FiGithub/></motion.a>
-                <motion.a whileHover={{ y: -5 }} href="https://linkedin.com" target="_blank" className="text-2xl text-slate-400 hover:text-white"><FiLinkedin/></motion.a>
-                <motion.a whileHover={{ y: -5 }} href="https://instagram.com" target="_blank" className="text-2xl text-slate-400 hover:text-white"><FiInstagram/></motion.a>
+                  <Motion.a whileHover={{ y: -5 }} href="https://github.com/Yogaarsyad" target="_blank" rel="noopener noreferrer" className="text-2xl text-slate-400 hover:text-white"><FiGithub/></Motion.a>
+                  <Motion.a whileHover={{ y: -5 }} href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-2xl text-slate-400 hover:text-white"><FiLinkedin/></Motion.a>
+                  <Motion.a whileHover={{ y: -5 }} href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-2xl text-slate-400 hover:text-white"><FiInstagram/></Motion.a>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         )}
       </AnimatePresence>
 
@@ -177,7 +177,7 @@ export default function App() {
       </main>
 
       {/* Footer with Animation */}
-      <motion.footer 
+      <Motion.footer 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -188,7 +188,7 @@ export default function App() {
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50 animate-pulse"></div>
 
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.div whileHover={{ scale: 1.02 }} className="inline-block">
+          <Motion.div whileHover={{ scale: 1.02 }} className="inline-block">
             <p className="text-slate-500 text-sm font-medium tracking-wide">
               © 2025 <span className="text-slate-300 hover:text-blue-400 transition-colors cursor-default">Tri Yoga Arsyad</span>. 
               Built with{' '}
@@ -196,19 +196,19 @@ export default function App() {
               {' '}&{' '}
               <span className="text-blue-400 hover:text-blue-300 transition-colors cursor-pointer" title="Tailwind CSS">Tailwind CSS</span>.
             </p>
-          </motion.div>
+          </Motion.div>
           
           {/* Location Animation */}
-          <motion.div 
+          <Motion.div 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-4 text-xs text-slate-600 font-medium tracking-wider uppercase"
           >
             Lombok, Nusa Tenggara Barat
-          </motion.div>
+          </Motion.div>
         </div>
-      </motion.footer>
+      </Motion.footer>
     </div>
   );
 }
